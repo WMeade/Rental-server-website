@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% block content %}
+<form method="POST" class="maincontainertwo bg-dark" action={% url 'edit_comps' %}>{% csrf_token %}
+        <table class="text-center mx-auto cartTable bg-dark">
+          <thead>
+            <tr>
+               <th ></th>
+               <th class="cartTableItem"> Server ID </th>
+               <th class="cartTableItem"> CPU </th>
+               <th class="cartTableItem"> Motherboard </th>
+               <th class="cartTableItem"> RAM </th>
+               <th class="cartTableItem"> HDD </th>
+               <th class="cartTableItem"> SDD </th>
+               <th class="cartTableItem"> GPU </th>
+               <th class="cartTableItem"> Rental cost </th>
+               <th class="cartTableItem"> Remove from cart </th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for cart_item in cart_items %}
+                {% if cart_item.server != None %}
+                <tr>
+                  {% if cart_item.server.user_made %}
+                    <td class="cartTableItem"><input id="radiobutton" type="radio" name="user_made_edit" value="{{cart_item.server.id}}" onclick="Utils.disableButton(this)"></td>
+                  {% else %}
+                    <td class="cartTableItem">Prebuilt</td>
+                  {% endif %}
+                  <td class="cartTableItem">{{cart_item.server.server_id}}</td>
+                  <td class="cartTableItem">{{cart_item.server.CPU}}</td>
+                  <td class="cartTableItem">{{cart_item.server.motherboard}}</td>
+                  <td class="cartTableItem">{{cart_item.server.RAM}}</td>
+                  <td class="cartTableItem">{{cart_item.server.HDD}}</td>
+                  <td class="cartTableItem">{{cart_item.server.SSD}}</td>
+                  <td class="cartTableItem">{{cart_item.server.GPU}}</td>
+                  <td class="cartTableItem">€{{cart_item.server.get_rental_cost}}</td>
+                  <td class="cartTableItem"><a href="{% url 'remove_cart' cart_item.server.secondary_id  %}" class="btn btn-secondary bg-info"> Remove from cart </a>
+                </tr>
+                {% endif %}
+            {% endfor %}
+          </tbody>
+        </table>
+        <table class="text-center mx-auto cartTable bg-dark mt-5">
+          <thead>
+            <tr>
+               <th class="cartTableItem"> Rental ID </th>
+               <th class="cartTableItem"> Extension Months </th>
+               <th class="cartTableItem"> Extension Cost </th>
+               <th class="cartTableItem"> Remove from cart </th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for cart_item in cart_items %}
+                <tr>
+                  {% if cart_item.extension != None %}
+                      <td class="cartTableItem">{{cart_item.rental_unique_id}}</td>
+                      <td class="cartTableItem">{{cart_item.extension}}</td>
+                      <td class="cartTableItem">€{{cart_item.price}}</td>
+                      <td class="cartTableItem"><a href="{% url 'remove_cart_extension' cart_item.rental_id  %}" class="btn btn-secondary bg-info"> Remove from cart </a>
+                  {% endif %}
+                </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <h5 class="text-light ml-2">Total:€{{total}}</h5>
+        <a href="{% url 'empty_cart' %}"  class="btn btn-secondary bg-info ml-2"> Empty Cart</a>
+        {% if total > 0 %}
+            <a href="{% url 'payment_detail' %}"  class="btn btn-secondary bg-info ml-2"> Checkout </a>
+        {% endif %}
+
+        <button type="submit" value="edit_selected" name="edit_selected" id="editbutton" class="btn btn-secondary bg-info ml-2" disabled >  Edit selected </button>
+        <button type="submit" value="saved_selected" name="save_selected" id="editbuttontwo" class="btn btn-secondary bg-info ml-2" disabled>  Save selected </button>
+
+
+</form>
+
+{% endblock content %}

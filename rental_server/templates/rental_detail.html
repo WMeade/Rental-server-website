@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="maincontainertwo bg-dark">
+    <div class="col-sm-6 mx-auto rentalDisplayBox mb-2">
+        <h4>Rental: {{id}}</h4>
+        <h5>Start time: {{rental.start_time}}</h5>
+        {% if rental.expired == False %}
+            <h5>Time until expiry: {{expiry_time}}</h5>
+        {% else %}
+            <nobr><h5 style="display:inline-block;">Time until expiry:<h5 class="text-danger ml-2" style="display:inline-block;"> Expired </h5></h5></nobr>
+        {% endif %}
+        <h5>End time: {{rental.end_time}}</h5>
+        <h5>Server Id: {{rental.server_id}}</h5>
+        <h5>Unique rental ID: {{rental.rental_unique_id}}</h5>
+        <h5>Total cost: €{{total}}</h5>
+    </div>
+    {% if rental.expired == False %}
+        <form method='POST' action="{% url 'add_rental_extension' rental.id %}" class="mt-5 mx-auto col-sm-6 rentalDisplayBox">{% csrf_token %}
+            <h4 class="text-light"> Extend rental: </h4>
+            <select class="form-control" name="extension_time">
+                <option value=0> Expire rental early </option>
+                <option value=1 selected> One month </option>
+                <option value=2> Two months </option>
+                <option value=6> Six months </option>
+                <option value=12> One Year </option>
+                <option value=24> Two Years </option>
+            </select>
+            <input type="submit" value="Add extension to cart" name="Add extension to cart" class="btn btn-dark bg-info mt-3"/>
+        </form>
+    {% endif %}
+</div>
+{% endblock content %}

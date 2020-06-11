@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="maincontainertwo bg-dark">
+   <nav class="navbar navbar-expand bg-dark navbar-dark p-1 navBorder">
+       <ul class="navbar-nav">
+           <li class="nav-item ml-2"><a href="{% url 'edit_profile' %}" class="nav-link">Profile</a></li>
+           <li class="nav-item ml-2 active"><a href="{% url 'edit_payment_details' %}" class="nav-link">Card details</a></li>
+            <li class="nav-item ml-2"><a href="{% url 'change_password' %}" class="nav-link">Change password</a></li>
+       </ul>
+   </nav>
+   <div class="col-sm-6 mx-auto pt-3">
+       {% if messages %}
+                {% for message in messages %}
+                  <h5 class="alert alert-danger mx-auto"{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</h5>
+                {% endfor %}
+         {% endif %}
+     </div>
+    <form method="POST" class="formoutline col-sm-10 mx-auto mt-3" action={% url 'make_change_card_details' %}>{% csrf_token %}
+      {% if existing_details != None %}
+          <h4 class="text-light">  Current card: </h4>
+          <h5 class="text-light"> Card:{{card_num_censored}} </h5>
+      {% endif %}
+      <h5 class="text-light"> Card number </h5>
+      <input type="text" name="card_num" class="form-control">
+      <h5 class="text-light"> Card csv </h5>
+      <input type="text" name="csv" class="form-control" maxlength="4">
+      <h5 class="text-light"> Expiry month </h5>
+      <input type="text" name="exp_month" class="form-control" maxlength="2">
+      <h5 class="text-light"> Expiry year </h5>
+      <input type="text" name="exp_year" class="form-control" maxlength="2">
+      <input type="submit" value="Submit" name="save" class="btn btn-dark bg-info mt-3"/>
+    </form>
+</div>
+{% endblock content %}

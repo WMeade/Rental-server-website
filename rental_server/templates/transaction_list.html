@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="maincontainertwo bg-dark">
+  <nav class="navbar navbar-expand bg-dark navbar-dark p-1 navBorder">
+      <ul class="navbar-nav">
+            <li class="nav-item ml-2 active"><a href="{% url 'transactions' %}" class="nav-link">Transactions</a></li>
+            <li class="nav-item ml-2"><a href="{% url 'tickets' %}" class="nav-link">Tickets</a></li>
+      </ul>
+  </nav>
+  {% if user.is_superuser %}
+      <form method="POST" action="{% url 'transaction_search' %}" class="ml-5">{% csrf_token %}
+          <h5 class="text-light mt-2"> Search transaction: </h5>
+          <input type="text" name="search_bar" class="form-control-sm">
+          <button type="submit" value="submit" class="ml-2 btn bg-info"> Search </button>
+      </form>
+  {% endif %}
+  {% for transaction in transactions %}
+        <div class="row bg-dark">
+            <div class="col-sm-6 mx-auto rentalDisplayBox mt-3 mb-2">
+                {% if transaction.refund_status == False and user.email == transaction.transaction_owner %}
+                    <a class=" btn btn-dark bg-info"  href="{% url 'create_ticket_form' transaction.id %}"> Create ticket </a>
+                    <h5>Transaction product: {{transaction.transaction_product_names}}</h5>
+                {% elif transaction.refund_status == False and user.is_superuser %}
+                    <a class=" btn btn-dark bg-info"  href="{% url 'refund_transaction' transaction.id %}"> Refund Transaction </a>
+                    <h5>Transaction product: {{transaction.transaction_product_names}}</h5>
+                {% elif transaction.refund_status == False %}
+                    <h5>Transaction product: {{transaction.transaction_product_names}}</h5>
+                {% else %}
+                    <h5 style="display:inline-block;">Transaction products: {{transaction.transaction_product_names}}<h4 class="text-danger ml-3" style="display:inline-block;">[Refunded]</h4></5>
+                {% endif %}
+                <h5>Transaction ID: {{transaction.id}}</h5>
+                <h5>Transaction time: {{transaction.transaction_time}}</h5>
+                <h5>Transaction amount: €{{transaction.transaction_amount}}</h5>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock content %}

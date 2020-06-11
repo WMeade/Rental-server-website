@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="maincontainertwo bg-dark">
+<form method="POST" action="{% url 'server_search' %}" class="ml-5 bg-dark">{% csrf_token %}
+<h5 class="text-light mt-2"> Search for Servers: </h5>
+  <input type="text" name="search_bar" class="form-control-sm">
+  <button type="submit" value="submit" class="ml-2 btn bg-info"> Search </button>
+</form>
+ <form method="POST" class="maincontainertwo bg-dark">
+        
+            <h4 style="color: white">Shared servers :</h4>
+        
+
+        {% for server in shared_list %}
+            <div class="contentContainerOne">
+                <div class="savedcontainer col-sm-2">
+                    <div class="card ml-1 mt-4 bg-secondary cardBorder">
+                        <h5 class="card-title text-light mx-auto mt-1"> {{server.server_id}} </h5>
+                            <div class="card-body">
+                                <h5> CPU: {{server.CPU.part_id}} </h5>
+                                <h5> Motherboard: {{server.motherboard.part_id}} </h5>
+                                <h5> RAM: {{server.RAM.part_id}} </h5>
+                                <h5> HDD: {{server.HDD.part_id}} </h5>
+                                <h5> SSD: {{server.SSD.part_id}} </h5>
+                                <h5> GPU: {{server.GPU.part_id}} </h5>
+                            </div>
+                            <div class="card-footer">
+                                <div class="row">
+                                    <h5> {{server.creator}} </h5>
+                                    <a href="{% url 'add_cart' server.id %}" class="btn btn-info "> Add Server to Cart </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </form>
+</div>
+{% endblock content %}

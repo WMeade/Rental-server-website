@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="maincontainertwo bg-dark">
+    {% for rental in rental_list %}
+        <div class="row bg-dark">
+            <div class="col-sm-6 mx-auto rentalDisplayBox mt-3 mb-2 bg-dark">
+                {% if rental.expired == False %}
+                    <h4>Rental: {{ server_dict|get_item:rental.server_id }}</h4>
+                {% else %}
+                    <h4 style="display:inline-block;">Rental: {{rental.rental_unique_id}}<h4 class="text-danger ml-3" style="display:inline-block;">[Expired]</h4></h4>
+                {% endif %}
+                <h5>Start time: {{rental.start_time}}</h5>
+                <h5>End time: {{rental.end_time}}</h5>
+                <h5>Server Id: {{rental.server_id}}
+                <h5>Unique rental ID: {{rental.rental_unique_id}}</h5>
+                <h5>Total cost: €{{cost_dict|get_item:rental.server_id }}
+                <a href="{% url 'rental_detail' rental.id %}" class="btn btn-dark bg-info"> View Rental </a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock content %}

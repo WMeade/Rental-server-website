@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<table>
+    <tr>
+        <th>CPU</th>
+        <th>Motherboard</th>
+        <th>RAM</th>
+        <th>HDD</th>
+        <th>SSD</th>
+        <th>GPU</th>
+        <th> Rental cost</th>
+    </tr>
+    <tr>
+        <td>{{server.CPU.part_id}} Cost: €{{server.CPU.rental_cost}}</td>
+        <td>{{server.motherboard.part_id}} Cost: €{{server.motherboard.rental_cost}}</td>
+        <td>{{server.RAM.part_id}} Cost: €{{server.RAM.rental_cost}}</td>
+        <td>{{server.HDD.part_id}} Cost: €{{server.HDD.rental_cost}}</td>
+        <td>{{server.SSD.part_id}} Cost: €{{server.SSD.rental_cost}}</td>
+        <td>{{server.GPU.part_id}} Cost: €{{server.GPU.rental_cost}}</td>
+        <td> €{{server.get_rental_cost}}</td>
+    </tr>
+</table>
+
+
+<a href="{% url 'add_no_dupe' server.id %}" value='add_to_cart' class="btn btn-secondary bg-info">Add creation to cart :) </a>
+<a href="{% url 'del_and_do' server.secondary_id 'try_again' %}" value="delete_and_try_again" class="btn btn-secondary bg-info"> Restart build :/ </a>
+<a href="{% url 'del_and_do' server.secondary_id 'home' %}" value="return_home" class="btn btn-secondary bg-info"> Return home without saving ;( </a>
+
+
+
+
+
+
+{% endblock content %}

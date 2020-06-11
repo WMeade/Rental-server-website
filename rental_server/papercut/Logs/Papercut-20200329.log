@@ -1,0 +1,22 @@
+2020-03-29 14:40:22.871 +01:00 [Information] Loading Messages from the Following Path(s) ["C:\Users\Wesley\AppData\Roaming\Papercut", "F:\Speedy Code\Year%202%20Project\rental_server\papercut\", "F:\Speedy Code\Year%202%20Project\rental_server\papercut\Incoming"]
+2020-03-29 14:40:22.915 +01:00 [Information] Default Message Save Path is Set to "C:\Users\Wesley\AppData\Roaming\Papercut"
+2020-03-29 14:40:24.220 +01:00 [Information] Papercut Version 5.5.1+Branch.master.Sha.f4164fe982d25b92ed439472e8c2dc4771a348ff
+2020-03-29 14:40:24.221 +01:00 [Information] Attempting to Load Rules from "F:\Speedy Code\Year%202%20Project\rental_server\papercut\rules.json" on AppReady
+2020-03-29 14:40:24.734 +01:00 [Information] IPComm Server Ready: Listening for New Connections at "127.0.0.1":37402
+2020-03-29 14:40:24.860 +01:00 [Information] Starting Smtp Server on "0.0.0.0":25...
+2020-03-29 14:42:16.840 +01:00 [Information] New SMTP connection from "0.0.0.0"
+2020-03-29 14:42:16.923 +01:00 [Information] Successfully Saved email message: "C:\Users\Wesley\AppData\Roaming\Papercut\20200329144216910 Account for Vortex Rentals succesfully 1b6166.eml"
+2020-03-29 14:42:16.928 +01:00 [Information] Completed SMTP connection from "0.0.0.0"
+2020-03-29 14:43:46.765 +01:00 [Information] New SMTP connection from "0.0.0.0"
+2020-03-29 14:43:46.772 +01:00 [Information] Successfully Saved email message: "C:\Users\Wesley\AppData\Roaming\Papercut\20200329144346768 Account for Vortex Rentals succesfully 5a4b03.eml"
+2020-03-29 14:43:46.772 +01:00 [Information] Completed SMTP connection from "0.0.0.0"
+2020-03-29 17:55:39.521 +01:00 [Information] New SMTP connection from "0.0.0.0"
+2020-03-29 17:55:39.544 +01:00 [Information] Successfully Saved email message: "C:\Users\Wesley\AppData\Roaming\Papercut\20200329175539524 Account for Vortex Rentals succesfully 9b3025.eml"
+2020-03-29 17:55:39.544 +01:00 [Information] Completed SMTP connection from "0.0.0.0"
+2020-03-29 18:01:41.362 +01:00 [Information] New SMTP connection from "0.0.0.0"
+2020-03-29 18:01:41.369 +01:00 [Information] Successfully Saved email message: "C:\Users\Wesley\AppData\Roaming\Papercut\20200329180141364 Account for Vortex Rentals succesfully c13f79.eml"
+2020-03-29 18:01:41.369 +01:00 [Information] Completed SMTP connection from "0.0.0.0"
+2020-03-29 18:08:51.077 +01:00 [Information] New SMTP connection from "0.0.0.0"
+2020-03-29 18:08:51.084 +01:00 [Information] Successfully Saved email message: "C:\Users\Wesley\AppData\Roaming\Papercut\20200329180851079 Account for Vortex Rentals succesfully 5c38a3.eml"
+2020-03-29 18:08:51.084 +01:00 [Information] Completed SMTP connection from "0.0.0.0"
+2020-03-29 22:00:23.390 +01:00 [Information] Stopping IPComm Server

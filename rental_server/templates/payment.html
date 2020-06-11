@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="maincontainer bg-dark">
+      <div class="col-sm-6 mx-auto pt-3">
+          {% if messages %}
+                   {% for message in messages %}
+                     <h5 class="alert alert-danger mx-auto"{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</h5>
+                   {% endfor %}
+            {% endif %}
+        </div>
+        <div class="carddetailsContainer">
+            <form method="POST" class="carddetailsbox mx-auto" action="{% url 'checkout' %}">{% csrf_token %}
+                 <h5 class="text-light"> Card number </h5>
+                 <input type="text" name="card_num" class="form-control">
+                 <h5 class="text-light"> Card csv </h5>
+                 <input type="text" name="csv" class="form-control" maxlength="4">
+                 <h5 class="text-light"> Expiry month </h5>
+                 <input type="text" name="exp_month" class="form-control" maxlength="2">
+                 <h5 class="text-light"> Expiry year </h5>
+                 <input type="text" name="exp_year" class="form-control" maxlength="2">
+                 <input type="submit" value="Pay and save details" name="pay_and_save" class="btn btn-dark bg-info mt-2"/>
+                 <input type="submit" value="Pay with card" name="pay_with_card" class="btn btn-dark bg-info ml-2 mt-2"/>
+            </form>
+            {% if existing_details != None %}
+                <form method="POST" class="carddetailsboxtwo" action="{% url 'checkout' %}">{% csrf_token %}
+                    <h5 class="text-light"> Pay with card ending with {{card_end_number}}</h5>
+                    <h5 class="text-light"> Card:{{card_num_censored}} </h5>
+                    <input type="submit" value="Pay with existing card" name="pay_with_existing_card" class="btn btn-dark bg-info mt-3"/>
+                </form>
+            {% endif %}
+        </div>
+
+    </div>
+
+
+
+{% endblock content %}

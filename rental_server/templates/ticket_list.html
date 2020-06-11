@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="maincontainertwo bg-dark">
+  <nav class="navbar navbar-expand bg-dark navbar-dark p-1 navBorder">
+      <ul class="navbar-nav">
+         <li class="nav-item ml-2"><a href="{% url 'transactions' %}" class="nav-link">Transactions</a></li>
+         <li class="nav-item ml-2 active"><a href="{% url 'tickets' %}" class="nav-link">Tickets</a></li>
+      </ul>
+  </nav>
+    {% for ticket in tickets %}
+        <div class="row bg-dark">
+            <div class="col-sm-6 mx-auto rentalDisplayBox mt-3 mb-2">
+                <h4>Title: {{ticket.title}}</h4>
+                <h5>Owner: {{ticket.author}}</h5>
+                <h5>Transaction: {{ticket.transaction_number}}
+                <h5>Description: {{ticket.description}}</h5>
+                <a class="btn btn-dark bg-info"  href="{% url 'ticket_detail' ticket.id %}"> View ticket </a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock content %}

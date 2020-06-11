@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="maincontainer bg-dark">
+        <div class="carouselContainer">
+            <div id="carousel/{{ product.pk }}" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li data-target="#carousel/{{ product.pk }}" data-slide-to="0" class="active"></li>
+                  <li data-target="#carousel/{{ product.pk }}" data-slide-to="1"></li>
+                  <li data-target="#carousel/{{ product.pk }}" data-slide-to="2"></li>
+                  <li data-target="#carousel/{{ product.pk }}" data-slide-to="3"></li>
+                </ol>
+                  <div class="carousel-inner">
+                   <div class="carousel-item active">
+                      <img class="d-block w-100" src="https://www.racksolutions.com/news//app/uploads/AdobeStock_173122779.jpeg" alt="First slide">
+                      <div class="carousel-caption d-none d-md-block">
+                           <h5>Customize your own powerful servers! Choose from a list of modern components.</h5>
+                           <a class="btn btn-dark bg-info"  href="{% url 'select_cpu' %}"> Customize Servers </a>
+                      </div>
+                  </div>
+                    <div class="carousel-item">
+                       <img class="d-block w-100" src="https://gadget.co.za/wp-content/uploads/2019/06/hosting-server-server-room-1570918.jpg" alt="Second slide">
+                       <div class="carousel-caption d-none d-md-block">
+                            <h5>You can edit your profile, payment details and change your password here.</h5>
+                            <a class="btn btn-dark bg-info"  href="{% url 'edit_profile' %}"> Edit profile </a>
+                       </div>
+                    </div>
+                    <div class="carousel-item">
+                      <img class="d-block w-100" src="https://www.petri.com/wp-content/uploads/sites/3/2018/06/Servers-Hero.jpg" alt="Third slide">
+                      <div class="carousel-caption d-none d-md-block">
+                           <h5>If you need assistance visit our customer support and create a ticket! An admin will assist you ASAP!</h5>
+                            <a class="btn btn-dark bg-info"  href="{% url 'transactions' %}"> Customer Support </a>
+                      </div>
+                    </div>
+                    <div class="carousel-item">
+                      <img class="d-block w-100" src="https://chelgate.com/app/uploads/2016/10/server-rack1.jpg" alt="Fourth slide">
+                      <div class="carousel-caption d-none d-md-block">
+                           <h5>You can view and manage your rentals in rental view! You can even extend your rental here.</h5>
+                           <a class="btn btn-dark bg-info"  href="{% url 'rental_list' %}"> Rental View </a>
+                      </div>
+                </div>
+                </div>
+                  <a class="carousel-control-prev" href="#carousel/{{ product.pk }}" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="carousel-control-next" href="#carousel/{{ product.pk }}" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </div>
+                <script>
+                    $('.carousel').carousel({
+                        interval: 3600
+                    })
+                </script>
+          </div>
+          <div class="contentContainerOne">
+              {% for server in prebuilt_list %}
+                  <div class="prebuiltContainer col-sm-2">
+                      <div class="card ml-1 mt-4 bg-secondary cardBorder">
+                          <h4 class="card-title text-light mx-auto mt-1"> {{server.server_id}} </h4>
+                          <div class="card-body">
+                              <h5> {{server.CPU.part_id}} </h5>
+                              <h5> {{server.motherboard.part_id}} </h5>
+                              <h5> {{server.RAM.part_id}} </h5>
+                              <h5> {{server.HDD.part_id}} </h5>
+                              <h5> {{server.SSD.part_id}} </h5>
+                              <h5> {{server.GPU.part_id}} </h5>
+                          </div>
+                          <div class="card-footer">
+                              <div class="row">
+                                 <h5> €{{server.get_rental_cost}}/month</h5> <a href="{% url 'add_cart' server.id %}" class="btn btn-dark bg-info ml-2"> Add to Cart </a>
+                              </div>
+                          </div>
+                     </div>
+                 </div>
+              {% endfor %}
+          </div>
+          <div class="contentContainerTwo">
+              <div class="otherContainer">
+                  <div class="card bg-secondary cardBorder">
+                      <h4 class="card-title text-light mx-auto mt-1"> Customer Service</h4>
+                      <div class="card-body">
+                          <p> Have an issue with a previous transaction, create a ticket and ask our admins questions. You can even apply for a refund here. </p>
+                       </div>
+                       <div class="card-footer">
+                           <div class="row">
+                              <a class="ml-3 btn btn-dark text-light bg-info" href="{% url 'transactions' %}"> Customer Support </a>
+                           </div>
+                       </div>
+                   </div>
+
+               </div>
+              <div class="otherContainer">
+                    <div class="card mt-4 bg-secondary cardBorder">
+                        <h4 class="card-title text-light mx-auto mt-1"> Customize Server</h4>
+                        <div class="card-body">
+                            <p class="text-bold ml-4"> Customize the parts within your own server from a large list of different components, from budget parts to ultra high end its your choice!</p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="row">
+                              <a class="ml-3 btn btn-dark bg-info"  href="{% url 'select_cpu' %}"> Customize Servers </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+{% endblock content %}

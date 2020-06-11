@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="maincontainertwo bg-dark">
+   <nav class="navbar navbar-expand bg-dark navbar-dark p-1 navBorder">
+       <ul class="navbar-nav">
+           <li class="nav-item ml-2 active"><a href="{% url 'edit_profile' %}" class="nav-link">Profile</a></li>
+           <li class="nav-item ml-2"><a href="{% url 'edit_payment_details' %}" class="nav-link">Card details</a></li>
+            <li class="nav-item ml-2"><a href="{% url 'change_password' %}" class="nav-link">Change password</a></li>
+       </ul>
+   </nav>
+   <div class="col-sm-6 mx-auto pt-3">
+       {% if messages %}
+                {% for message in messages %}
+                  <h5 class="alert alert-danger mx-auto"{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</h5>
+                {% endfor %}
+         {% endif %}
+     </div>
+    <form method="POST" class="formoutline col-sm-10 mx-auto mt-3" action={% url 'make_edit' %}>{% csrf_token %}
+      <h5 class="text-light mt-2">Username:</h5>
+      <input type="text" name="username" class="form-control" value="{{user.username}}">
+      <h5 class="text-light mt-2">Email:</h5>
+      <input type="text" name="email" class="form-control" value="{{user.email}}">
+      <h5 class="text-light mt-2">First Name:</h5>
+      <input type="text" name="fname" class="form-control" value="{{user.fname}}">
+      <h5 class="text-light mt-2">Last Name:</h5>
+      <input type="text" name="lname" class="form-control" value="{{user.lname}}">
+      <h5 class="text-light mt-2">Date of Birth:*</h5>
+      <input type="date" name="dob" class="form-control" value="{{user.dob}}">
+      <h5 class="text-light mt-2">Address Line 1:</h5>
+      <input type="text" name="address1" class="form-control" value="{{user.address1}}">
+      <h5 class="text-light mt-2">Address Line 2:</h5>
+      <input type="text" name="address2" class="form-control" value="{{user.address2}}">
+      <h5 class="text-light mt-2">Address Line 3:</h5>
+      <input type="text" name="address3" class="form-control" value="{{user.address3}}">
+      <h5 class="text-light mt-2">Password</h5>
+      <input type="password" name="password1" class="form-control">
+      <h5 class="text-light mt-2">Reconfirm Password</h5>
+      <input type="password" name="password2" class="form-control">
+      <input type="submit" value="Submit" class=" btn btn-dark bg-info mt-3">
+    </form>
+</div>
+{% endblock content %}

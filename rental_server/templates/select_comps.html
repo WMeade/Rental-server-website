@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="maincontainertwo bg-dark">
+    <form method="POST" class="col-sm-10 mx-auto formoutline" action={% url 'summary' cpu.id %}>{% csrf_token %}
+        <h4 class="mt-3 text-light mx-auto">CPU: {{cpu.part_id}} Price: €{{cpu.rental_cost}}</h4>
+        <div class="row mt-3 ml-4 mr-2">
+           <h4> Name your server: </h4>
+           <input type="text" class="form-control" name="server_id">
+        </div>
+
+        <div class="row mt-3 ml-4 mr-2">
+            <h4> Motherboard: </h4>
+            <select id="motherboard" name="motherboard" class="form-control">
+                {% for motherboard in motherboard_list %}
+                    <option value="{{motherboard.id}}">{{motherboard.part_id}} Price: €{{motherboard.rental_cost}} </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="row mt-3 ml-4 mr-2">
+            <h4> RAM: </h4>
+            <select id="ram" name="ram" class="form-control">
+                {% for ram in ram_list %}
+                    <option value="{{ram.id}}">{{ram.part_id}} Price: €{{ram.rental_cost}} </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="row mt-3 ml-4 mr-2">
+            <h4> HDD: </h4>
+            <select id="hdd" name="hdd" class="form-control">
+                {% for hdd in hdd_list %}
+                    <option value="{{hdd.id}}">{{hdd.part_id}} Price: €{{hdd.rental_cost}} </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="row mt-3 ml-4 mr-2">
+            <h4> SSD: </h4>
+            <select id="ssd" name="ssd" class="form-control">
+                {% for ssd in ssd_list %}
+                    <option value="{{ssd.id}}">{{ssd.part_id}} Price: €{{ssd.rental_cost}} </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="row mt-3 ml-4 mr-2">
+            <h4> GPU: </h4>
+            <select id="gpu" name="gpu" class="form-control">
+                {% for gpu in gpu_list %}
+                    <option value="{{gpu.id}}">{{gpu.part_id}} Price: €{{gpu.rental_cost}} </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <button type="submit" value="submit" class="mt-3 ml-2 btn bg-info">Finalize Build :) </button>
+    </form>
+</div>
+{% endblock content %}

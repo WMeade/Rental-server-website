@@ -1,0 +1,144 @@
+.carousel-item,
+.carousel-inner,
+.carousel-inner img {
+  height: 100%;
+  width: 100%;
+}
+
+.carousel-item {
+  text-align: center;
+}
+
+.maincontainer{
+  background-color: #000000;
+  width: 100%;
+}
+
+.maincontainertwo{
+  background-color: #000000;
+  width: 100%;
+  height: 100%;
+  padding-top: 2em;
+  margin-bottom: -2em;
+}
+
+.carouselContainer{
+  width: 100%;
+  height: 90%;
+  background-color: #000000;
+  border-bottom: 0.2em solid turquoise;
+}
+
+.navBorder{
+  border-bottom: 0.2em solid turquoise;
+}
+
+.contentContainerOne{
+  width: 100%;
+  height: 30em;
+}
+
+.contentContainerTwo{
+  width: 100%;
+  height: 20em;
+}
+
+.otherContainer{
+  display: inline-block;
+  width: 45%;
+  height: 80%;
+  margin-left: 3.2%;
+}
+
+.prebuiltContainer{
+  display: inline-block;
+  width: 20%;
+  height: 80%;
+  margin-left: 6.5%;
+}
+
+.cardBorder{
+  border: 0.2em solid turquoise;
+}
+
+.Search{
+  background-color: darkgrey;
+  color: black;
+  border: 0.02em solid turquoise;
+  border-radius: 10px;
+  -webkit-appearance: none;
+}
+.Search::placeholder{
+  color:black;
+}
+
+.carddetailsContainer{
+  width: 80%;
+  height: 100%;
+  padding-top: 5%;
+}
+
+.carddetailsbox{
+  width: 20%;
+  padding: 1em;
+  margin-left: 10%;
+  border: 0.1em solid turquoise;
+  border-radius: 10px;
+}
+
+.carddetailsboxtwo{
+  width: 20%;
+  padding: 1em;
+  margin-left: 80em;
+  margin-top: -13em;
+  border: 0.1em solid turquoise;
+  border-radius: 10px;
+}
+
+.rentalDisplayBox{
+  border: 0.1em solid turquoise;
+  border-radius: 10px;
+  color: white;
+  padding: 1em;
+}
+
+.cartTable{
+  border: 0.1em solid turquoise;
+  border-radius: 10px;
+  color: white;
+  width: 80%;
+}
+
+.cartTableItem{
+  border: 0.1em solid turquoise;
+  border-radius: 10px;
+  color: white;
+  padding:.5em;
+}
+
+.formoutline{
+  border: 0.1em solid turquoise;
+  border-radius: 10px;
+  color: white;
+  padding:.5em;
+}
+.maincontainersaved{
+  background-color: #000000;
+  width: 100%;
+  height: 100%;
+  padding-top: 2em;
+  margin-bottom: -2em;
+}
+.savedcontainer{
+  float: left;
+  width: 30%;
+  height: 70%;
+  margin: 2%;
+}
+.savedfooter{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<form method="POST" class="maincontainersaved bg-dark" action={% url 'user_shared' %}>{% csrf_token %}
+    
+        <h4 style="color: white">Saved servers :</h4>
+    
+
+    {% for server in saved_list %}
+        {% if server.creator == user.email %}
+            <div class="contentContainerOne">
+                <div class="savedcontainer col-sm-2">
+                    <div class="card ml-1 mt-4 bg-secondary cardBorder">
+                      <h5 class="card-title text-light mx-auto mt-1"> {{server.server_id}} </h5>
+                      <div class="card-body">
+                          <h5> CPU: {{server.CPU.part_id}} </h5>
+                          <h5> Motherboard: {{server.motherboard.part_id}} </h5>
+                          <h5> RAM: {{server.RAM.part_id}} </h5>
+                          <h5> HDD: {{server.HDD.part_id}} </h5>
+                          <h5> SSD: {{server.SSD.part_id}} </h5>
+                          <h5> GPU: {{server.GPU.part_id}} </h5>
+                      </div>
+                      <div class="card-footer">
+                          <div class="row">
+                              <input id="radiobutton" type="radio" name="user_select" value="{{server.id}}" onclick="Utils.disableButton()">
+                              {% if server.shared_publically == True %}
+                                  <h5>Server is shared</h5>
+                              {% else %}
+                                  <h5>Server is  not shared</h5>
+                              {% endif %}
+                          </div>
+                      </div>
+                    </div>
+                </div>
+              
+        {% endif %}
+    {% endfor %}
+</div>
+    <div class="savedfooter">
+        <button type='submit' value='share_server' name='share_server' class="btn btn-secondary bg-info ml-2" >Share server</button>
+        <button type='submit' value='unshare_server' name='unshare_server' class="btn btn-secondary bg-info ml-2" >Unshare server</button>
+        <button type='submit' value='unsave_server' name='unsave_server' class="btn btn-secondary bg-info ml-2" >Unsave server</button>
+    </div>
+</form>
+{% endblock content %}

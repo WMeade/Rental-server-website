@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %} Sign Up {% endblock title %}
+
+{% block content %}
+<div class="maincontainertwo bg-dark">
+    <form method="POST" class="formoutline col-sm-10 mx-auto mt-3" action={% url 'signup' %}>{% csrf_token %}
+      <h5 class="text-light mt-2">Username:</h5>
+      <input type="text" name="username" class="form-control">
+      <h5 class="text-light mt-2">Email:</h5>
+      <input type="text" name="email" class="form-control">
+      <h5 class="text-light mt-2">First Name:</h5>
+      <input type="text" name="fname" class="form-control">
+      <h5 class="text-light mt-2">Last Name:</h5>
+      <input type="text" name="lname" class="form-control">
+      <h5 class="text-light mt-2">Date of Birth:</h5>
+      <input type="date" name="dob" class="form-control">
+      <h5 class="text-light mt-2">Address Line 1:</h5>
+      <input type="text" name="address1" class="form-control">
+      <h5 class="text-light mt-2">Address Line 2:</h5>
+      <input type="text" name="address2" class="form-control">
+      <h5 class="text-light mt-2">Address Line 3:</h5>
+      <input type="text" name="address3" class="form-control">
+      <h5 class="text-light mt-2">Password</h5>
+      <input type="password" name="password1" class="form-control">
+      <h5 class="text-light mt-2">Reconfirm Password</h5>
+      <input type="password" name="password2" class="form-control">
+      <input type="submit" value="Submit" class=" btn btn-dark bg-info mt-3">
+      <a href="{% url 'login' %}" class="btn btn-dark bg-info mt-3"login>Login</a>
+    </form>
+
+
+</div>
+{% endblock content %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="maincontainertwo bg-dark">
+
+    <form method="POST" class="col-sm-10 mx-auto formoutline" action={% url 'select_comps' %}>{% csrf_token %}
+        <h4 class="text-light">CPU:</h4>
+        <select id="cpu" name="cpu" class="form-control">
+            {% for cpu in cpu_list %}
+                <option value="{{cpu.id}}">{{cpu.part_id}} Price: €{{cpu.rental_cost}} </option>
+            {% endfor %}
+        </select>
+        <button type="submit" value="submit" class="btn bg-info mt-2">Choose CPU </button>
+    </form>
+</div>
+{% endblock content %}

@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="maincontainertwo bg-dark">
+    <form method="POST" class="formoutline col-sm-10 mx-auto" action={% url 'finalize_edit' server_edit.id %}>{% csrf_token %}
+        <h4 class="mt-3">CPU: {{cpu.part_id}} Price: €{{cpu.rental_cost}}</h4>
+        <div class="row mt-3 ml-4 mr-2">
+           <h4> Name your server: </h4>
+           <input type="text" class="form-control" name="server_id" value="{{server_edit.server_id}}">
+        </div>
+
+        <div class="row mt-3 ml-4 mr-2">
+            <h4> Motherboard: </h4>
+            <select id="motherboard" class="form-control" name="motherboard">
+                {% for motherboard in motherboard_list %}
+                    {% if motherboard.id == server_edit.motherboard.id %}
+                         <option value="{{motherboard.id}}" selected>{{motherboard.part_id}} Price: €{{motherboard.rental_cost}} </option>
+                    {% else %}
+                         <option value="{{motherboard.id}}">{{motherboard.part_id}} Price: €{{motherboard.rental_cost}} </option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+        <div class="row mt-3 ml-4 mr-2">
+            <h4> RAM: </h4>
+            <select id="ram" class="form-control" name="ram">
+                {% for ram in ram_list %}
+                    {% if ram.id == server_edit.RAM.id %}
+                           <option value="{{ram.id}}" selected>{{ram.part_id}} Price: €{{ram.rental_cost}} </option>
+                    {% else %}
+                           <option value="{{ram.id}}">{{ram.part_id}} Price: €{{ram.rental_cost}} </option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+        <div class="row mt-3 ml-4 mr-2">
+            <h4> HDD: </h4>
+            <select id="hdd" class="form-control" name="hdd">
+                {% for hdd in hdd_list %}
+                    {% if hdd.id == server_edit.HDD.id %}
+                         <option value="{{hdd.id}}" selected>{{hdd.part_id}} Price: €{{hdd.rental_cost}} </option>
+                    {% else %}
+                         <option value="{{hdd.id}}">{{hdd.part_id}} Price: €{{hdd.rental_cost}} </option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+        <div class="row mt-3 ml-4 mr-2">
+            <h4> SSD: </h4>
+            <select id="ssd" class="form-control" name="ssd">
+                {% for ssd in ssd_list %}
+                    {% if ssd.id == server_edit.SSD.id %}
+                         <option value="{{ssd.id}}" selected>{{ssd.part_id}} Price: €{{ssd.rental_cost}} </option>
+                    {% else %}
+                        <option value="{{ssd.id}}">{{ssd.part_id}} Price: €{{ssd.rental_cost}} </option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+        <div class="row mt-3 ml-4 mr-2">
+            <h4> GPU: </h4>
+            <select id="gpu" class="form-control" name="gpu">
+                {% for gpu in gpu_list %}
+                    {% if gpu.id == server_edit.GPU.id %}
+                         <option value="{{gpu.id}}" selected>{{gpu.part_id}} Price: €{{gpu.rental_cost}} </option>
+                    {% else %}
+                         <option value="{{gpu.id}}">{{gpu.part_id}} Price: €{{gpu.rental_cost}} </option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit" value="submit" class="mt-3 ml-2 btn bg-info"> Finish edit </button>
+    </form>
+</div>
+{% endblock content %}

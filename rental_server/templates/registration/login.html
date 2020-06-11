@@ -1,0 +1,17 @@
+
+{% extends 'base.html' %}
+{% block title %} Log in {% endblock title %}
+{% block content %}
+<div class="maincontainertwo bg-dark">
+    <form method="POST" class="formoutline col-sm-10 mx-auto mt-3">{% csrf_token %}
+      <h5 class="text-light mt-2">Username:</h5>
+      <input type="text" name="username" class="form-control">
+      <h5 class="text-light mt-2">Password</h5>
+      <input type="password" name="password" class="form-control">
+      <input type="submit" value="Submit" class=" btn btn-dark bg-info mt-3">
+      <a href="{% url 'signup' %}" class="btn btn-dark bg-info mt-3">Sign up</a>
+    </form>
+
+
+</div>
+{% endblock content %}
